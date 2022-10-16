@@ -1,16 +1,16 @@
-const Formulario = ({cliente}) => {
+const FormCustomer = ({cliente}) => {
     return (
         <>
             <div className="mb-4">
                 <label
                     className="text-gray-800"
                     htmlFor="nombre"
-                >Nombre:</label>
+                >Name:</label>
                 <input 
                     id="nombre"
                     type="text"
                     className="mt-2 block w-full p-3 bg-gray-50"
-                    placeholder="Nombre del Cliente"
+                    placeholder="Name of the customer"
                     name="nombre"
                 />
             </div>
@@ -18,12 +18,12 @@ const Formulario = ({cliente}) => {
                 <label
                     className="text-gray-800"
                     htmlFor="empresa"
-                >Empresa:</label>
+                >Company:</label>
                 <input 
                     id="empresa"
                     type="text"
                     className="mt-2 block w-full p-3 bg-gray-50"
-                    placeholder="Empresa del Cliente"
+                    placeholder="Company's name"
                     name="empresa"
                 />
             </div>
@@ -37,7 +37,7 @@ const Formulario = ({cliente}) => {
                     id="email"
                     type="email"
                     className="mt-2 block w-full p-3 bg-gray-50"
-                    placeholder="Email del Cliente"
+                    placeholder="Email from the customer"
                     name="email"
                 />
             </div>
@@ -46,12 +46,12 @@ const Formulario = ({cliente}) => {
                 <label
                     className="text-gray-800"
                     htmlFor="telefono"
-                >Teléfono:</label>
+                >Phone:</label>
                 <input 
                     id="telefono"
                     type="tel"
                     className="mt-2 block w-full p-3 bg-gray-50"
-                    placeholder="Teléfono del Cliente"
+                    placeholder="Phone number"
                     name="telefono"
                 />
             </div>
@@ -60,13 +60,13 @@ const Formulario = ({cliente}) => {
                 <label
                     className="text-gray-800"
                     htmlFor="notas"
-                >Notas:</label>
+                >Notes:</label>
                 <textarea
                     as="textarea"
                     id="notas"
                     type="text"
                     className="mt-2 block w-full p-3 bg-gray-50 h-40 align-self"
-                    placeholder="Notas del Cliente"
+                    placeholder="Notes from the customer"
                     name="notas"
                 />
             </div>
@@ -74,4 +74,4 @@ const Formulario = ({cliente}) => {
     )
 }
 
-export default Formulario
+export default FormCustomer
