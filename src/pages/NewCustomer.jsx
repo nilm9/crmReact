@@ -1,14 +1,36 @@
-import { useNavigate , redirect , Form} from "react-router-dom"
+import { useNavigate , useActionData , Form} from "react-router-dom"
 import FormCustomer from "../components/FormCustomer"
+import Error from "../components/Error"
 
 export async function action({request}){
   const formData = await request.formData()
   // Debug formdata
   // console.log([...formData]);
+  const data = Object.fromEntries(formData)
+
+  const email =formData.get('email')
+
+  //Valideate
+  const error = []
+  if(Object.values(data).includes('')){
+    error.push('All the fields are required')
+  }
+  let regex = new RegExp("([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\"\(\[\]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\[[\t -Z^-~]*])")
+  if(!regex.test(data[0])){
+    error.push("Invalid email address")
+  }
+
+
+
+  //Return the data if errror
+  if(Object.keys(error).length){
+    return error
+  }
 }
 
 const NewCustomer = ({cliente}) => {
 
+  const errors = useActionData()
   const navigate = useNavigate()
 
   return (
@@ -21,8 +43,11 @@ const NewCustomer = ({cliente}) => {
         <button className='bg-blue-800 text-white px-3 py-1 font-bold uppercase' onClick={() => navigate(-1)}>Return</button>
     </div>
     <div className="bg-white shadow rounded-md md:w-3/4 mx-auto px-5 py-10 mt-20">
+      {errors?.length && errors.map((error, i)=> 
+      <Error key={i}>{error}</Error>      )}
         <Form
         method="post"
+        noValidate
 
         >
         <FormCustomer cliente={cliente} />
