@@ -4,7 +4,7 @@ import { getCustomers } from "../api/customers";
 
 export function loader(){
 const cusotmer = getCustomers();
-return
+return cusotmer
 }
 
 
